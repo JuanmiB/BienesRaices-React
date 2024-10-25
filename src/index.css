@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --color-primary : #6366F1
+}
+
+body {
+    background-color: beige;
+    min-height: 100vh;
+    border: red 2px solid;
+
+}
