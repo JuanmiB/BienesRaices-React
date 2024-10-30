@@ -1,31 +1,22 @@
-import Footer from "./components/Footer/Footer"
-import Header from "./components/Header/Header"
-import Nav from "./components/Nav/Nav"
-import Search from "./components/Search/Search"
+import Home from "./pages/Home";
+import { Route, Routes } from "react-router-dom";
+import ResultadoBusqueda from "./pages/ResultadoBusqueda";
+import DetallesPropiedad from "./pages/DetallesPropiedad";
 
-const ops = ['Comprar', 'Alquilar', 'Obra nueva', 'Compartir']
 const App = () => {
+  console.log('hola soy el componenete app');
   return (
     <div>
-      <Header />
-      {/* <Nav /> */}
-      <Search radioOps={ops} />
-      {/* CONTENIDO */}
-      <section className="m-20">
-        <h2>Seccion de contenido</h2>
-        <article className=" container flex flex-col w-[300px]">
-          <header>
-            <h3>Titulo de card</h3>
-          </header>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam ratione sapiente ipsum fugiat accusantium hic doloremque natus explicabo perferendis sunt. Sit, ut cupiditate! Assumenda magnam laborum perspiciatis nemo, ad maiores?</p>
-          <footer>
-            <span>Tag</span>
-          </footer>
-        </article>
-      </section>
-      <Footer />
-    </div>
-  )
-}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/categorias/buscar" element={<ResultadoBusqueda />} />
+        <Route path="/propiedades/:id" element={<DetallesPropiedad />} />
 
-export default App
+
+
+      </Routes>
+    </div>
+  );
+};
+
+export default App;

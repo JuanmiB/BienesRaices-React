@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import PropTypes from "prop-types"
 import './RadioOptions.css';
 
-const RadioButtons = ({ opciones }) => {
-    console.log(opciones);
+const RadioButtons = ({ opciones = [] }) => {
+
   const [selectedOption, setSelectedOption] = useState(opciones[1])
-    console.log(selectedOption)
+
   const handleChange = (event) => {
     setSelectedOption(event.target.value)
   };
@@ -33,5 +34,9 @@ const RadioButtons = ({ opciones }) => {
     </ul>
   );
 };
+
+RadioButtons.propTypes = {
+  opciones: PropTypes.array
+}
 
 export default RadioButtons;

@@ -13,6 +13,7 @@ export default {
         xl: '1280px',
         '2xl': '1536px',
         'custom': '830px',
+        'customlg': '1150px'
       },
       colors: {
         primary: 'var(--color-primary)'
