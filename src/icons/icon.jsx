@@ -54,3 +54,43 @@ export const Cabana = () => {
         </>
     )
 }
+
+export const Baños = () => {
+    return (
+        <>
+        <svg width="40px" height="40px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill="var(--ci-primary-color, #000000)" d="M464,280H80V100A51.258,51.258,0,0,1,95.113,63.515l.4-.4a51.691,51.691,0,0,1,58.6-10.162,79.1,79.1,0,0,0,11.778,96.627l10.951,10.951-20.157,20.158,22.626,22.626,20.157-20.157h0L311.157,71.471h0l20.157-20.157L308.687,28.687,288.529,48.844,277.578,37.893a79.086,79.086,0,0,0-100.929-8.976A83.61,83.61,0,0,0,72.887,40.485l-.4.4A83.054,83.054,0,0,0,48,100V280H16v32H48v30.7a23.95,23.95,0,0,0,1.232,7.589L79,439.589A23.969,23.969,0,0,0,101.766,456h12.9L103,496h33.333L148,456H356.1l12,40H401.5l-12-40h20.73A23.969,23.969,0,0,0,433,439.589l29.766-89.3A23.982,23.982,0,0,0,464,342.7V312h32V280ZM188.52,60.52a47.025,47.025,0,0,1,66.431,0L265.9,71.471,199.471,137.9,188.52,126.951A47.027,47.027,0,0,1,188.52,60.52ZM432,341.4,404.468,424H107.532L80,341.4V312H432Z" className="ci-primary"></path> </g></svg>
+        </>
+    )
+}
+
+export const Cochera = () => {
+    return(
+        <>
+        <svg width="40px" height="40px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill="var(--ci-primary-color, #000000)" d="M448,255.454h-.511L407.067,164.5A48.044,48.044,0,0,0,363.2,136H148.8a48.043,48.043,0,0,0-43.863,28.5L64.511,255.454H64a32.036,32.036,0,0,0-32,32v112a32.036,32.036,0,0,0,32,32V472a24.028,24.028,0,0,0,24,24h56a24.028,24.028,0,0,0,24-24V431.454H344V472a24.028,24.028,0,0,0,24,24h56a24.028,24.028,0,0,0,24-24V431.454a32.036,32.036,0,0,0,32-32v-112A32.036,32.036,0,0,0,448,255.454ZM134.175,177.5A16.013,16.013,0,0,1,148.8,168H363.2a16.014,16.014,0,0,1,14.621,9.5l34.646,77.953H99.529ZM136,464H96V431.454h40Zm280,0H376V431.454h40Zm32-64.546H64v-112H448Z" className="ci-primary"></path> <rect width="80" height="32" x="96" y="328" fill="var(--ci-primary-color, #000000)" className="ci-primary"></rect> <rect width="80" height="32" x="336" y="328" fill="var(--ci-primary-color, #000000)" className="ci-primary"></rect> <polygon fill="var(--ci-primary-color, #000000)" points="256 14.758 16 111.121 16 145.604 256 49.242 496 145.604 496 111.121 256 14.758" className="ci-primary"></polygon> </g></svg>
+        </>
+    )
+}
+
+export const Dormitorio = () => {
+    return (
+        <>
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" enableBackground="new 0 0 32 32" xmlSpace="preserve" width="40px" height="40px" fill="#000000"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill="none" stroke="#000000" strokeWidth="2" strokeMiterlimit="10" d="M28,16V9c0-1.1-0.9-2-2-2H6C4.9,7,4,7.9,4,9v7"></path> <path fill="none" stroke="#000000" strokeWidth="2" strokeMiterlimit="10" d="M8,16v-2c0-1.1,0.9-2,2-2h4c1.1,0,2,0.9,2,2v2"></path> <path fill="none" stroke="#000000" strokeWidth="2" strokeMiterlimit="10" d="M16,16v-2c0-1.1,0.9-2,2-2h4c1.1,0,2,0.9,2,2v2"></path> <path fill="none" stroke="#000000" strokeWidth="2" strokeMiterlimit="10" d="M3,18v8h3v-2h20v2h3v-8c0-1.1-0.9-2-2-2H5 C3.9,16,3,16.9,3,18z"></path> </g></svg>
+        </>
+    )
+}
+
+export const PlanoAmbiente = () =>{
+return(
+    <>
+    <svg width="40px" height="40px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M2 2v18h3v-1H3v-6h3V9h5V8H6V3h15v5h-6v1h6v5h-4v1h4v6H11v-7h-1v5H8v1h2v2h12V2zm3 4H3V5h2zm-2 6v-1h2v1zm2-2H3V9h2zM3 8V7h2v1zm2-4H3V3h2z"></path><path fill="none" d="M0 0h24v24H0z"></path></g></svg>
+    </>
+)
+}
+
+export const MetrosTotal = () => {
+    return(
+        <>
+        <svg fill="#000000" height="40px" width="40px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.00 512.00" xmlSpace="preserve" stroke="#000000" strokeWidth="0.00512003"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" stroke="#CCCCCC" strokeWidth="2.0480120000000004"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M489.74,0.001H155.827c-9.22,0-16.696,7.475-16.696,16.696V361.74c0,9.22,7.475,16.696,16.696,16.696H489.74 c9.22,0,16.696-7.475,16.696-16.696V16.696C506.436,7.476,498.961,0.001,489.74,0.001z M473.045,133.566h-50.087 c-9.22,0-16.696,7.475-16.696,16.696s7.475,16.696,16.696,16.696h50.087v178.087H261.566v-50.087 c0-9.22-7.475-16.696-16.696-16.696s-16.696,7.475-16.696,16.696v50.087h-55.652V33.392h55.652v183.652 c0,9.22,7.475,16.696,16.696,16.696s16.696-7.475,16.696-16.696v-50.087h83.478c9.22,0,16.696-7.475,16.696-16.696 s-7.475-16.696-16.696-16.696h-83.478V33.392h211.478V133.566z"></path> </g> </g> <g> <g> <path d="M501.543,450.105l-33.388-33.389c-6.519-6.52-17.091-6.52-23.611,0s-6.52,17.091,0,23.611l4.89,4.891H129.351l4.89-4.891 c6.52-6.519,6.52-17.09,0.001-23.61c-6.519-6.52-17.091-6.52-23.611,0l-33.388,33.389c-6.565,6.558-6.452,17.171,0,23.617 l33.388,33.389c6.519,6.52,17.091,6.521,23.611,0c6.52-6.52,6.52-17.091,0-23.611l-4.891-4.892h320.082l-4.89,4.891 c-6.52,6.52-6.52,17.091,0,23.611c6.519,6.52,17.091,6.521,23.611,0l33.388-33.389 C508.053,467.218,508.038,456.593,501.543,450.105z"></path> </g> </g> <g> <g> <path d="M77.24,349.935l-4.891,4.89V57.003l4.891,4.89c6.519,6.52,17.091,6.521,23.611,0c6.52-6.519,6.521-17.091,0-23.611 L67.459,4.89c-6.519-6.52-17.091-6.52-23.611,0L10.457,38.281c-6.52,6.519-6.521,17.091,0,23.611c6.519,6.52,17.091,6.52,23.611,0 l4.89-4.89v297.821l-4.89-4.89c-6.519-6.52-17.091-6.52-23.611,0c-6.52,6.519-6.521,17.091,0,23.611l33.391,33.391 c6.519,6.52,17.091,6.521,23.611,0l33.391-33.391c6.52-6.519,6.521-17.091,0-23.611C94.332,343.415,83.76,343.415,77.24,349.935z"></path> </g> </g> </g></svg>
+        </>
+    )
+}

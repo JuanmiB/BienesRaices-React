@@ -1,15 +1,42 @@
+import React from 'react';
+import { useAuth } from '../../context/AuthContext';
+
 const Header = () => {
-    return(
+    const { isAuthenticated, user, logout, loading } = useAuth();
+
+    return (
         <header className="flex justify-between px-6 h-[56px] items-center bg-[var(--color-primary)]">
-            <h1 className="text-2xl text-white font-extrabold"><a href="/">BienesRaices</a></h1>
+            <h1 className="text-2xl text-white font-extrabold">
+                <a href="/">BienesRaices</a>
+            </h1>
 
             <div className="flex gap-4">
-                {/* Elementos 'a' que conducen a esas paginas */}
-                <p>Ingresa</p>
-                <p>Crear Cuenta</p>
+                {loading ? (
+                    <p className="text-white">Cargando...</p>
+                ) : isAuthenticated ? (
+                    <>
+                        <p className="text-white">Bienvenido, {user?.nombre || user?.name}</p>
+                        <a href="/admin/mis-propiedades">Mis propiedades</a>
+                        <button
+                            onClick={logout}
+                            className="text-white hover:underline"
+                        >
+                            Cerrar sesión
+                        </button>
+                    </>
+                ) : (
+                    <>
+                        <p>
+                            <a href="/auth/acceder" className="text-white hover:underline">Ingresa</a>
+                        </p>
+                        <p>
+                            <a href="/auth/crear-cuenta" className="text-white hover:underline">Crear Cuenta</a>
+                        </p>
+                    </>
+                )}
             </div>
         </header>
-    )
-}
+    );
+};
 
-export default Header
+export default React.memo(Header);
