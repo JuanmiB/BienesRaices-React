@@ -1,31 +1,31 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
 import Search from "../components/Search/Search";
 import CardCategories from '../components/CardCategorie/CardCategories';
+import api from '../utils/axiosConfig';
 
-const ops = ['Comprar', 'Alquilar', 'Obra nueva', 'Compartir'];
+const ops = ['Comprar', 'Alquilar', 'Obra nueva', 'Compartir']
 
 const Home = () => {
-    const [categories, setCategories] = useState([]);
+    const [categories, setCategories] = useState([])
     //Cambiar por loading de useAuth()
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const { data } = await axios.get('http://localhost:1234/');
-                const nombreCat = data.categorias.map(cat => cat.name);
+                const { data } = await api.get('/')
+                const nombreCat = data.categorias.map(cat => cat.name)
                 setCategories(nombreCat);
             } catch (error) {
-                console.error('Error fetching categories:', error);
+                console.error('Error fetching categories:', error)
             } finally {
-                setLoading(false);
+                setLoading(false)
             }
         };
         
-        fetchCategories();
+        fetchCategories()
     }, []);
     
     return (
@@ -47,7 +47,7 @@ const Home = () => {
                     </ul>
                 )}
             </section>
-
+   
             <Footer />
         </>
     );

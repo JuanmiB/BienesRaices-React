@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import axios from "axios";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import CardPropiedad from "../components/CardPropiedad/CardPropiedad";
+import api from "../utils/axiosConfig";
 
 const ResultadoBusqueda = () => {
   const location = useLocation();
@@ -17,7 +17,7 @@ const ResultadoBusqueda = () => {
     // Realiza la búsqueda cuando el componente se carga o el query cambia
     const fetchResults = async () => {
       try {
-        const response = await axios.get(`http://localhost:1234/categorias/buscar?query=${query}`)
+        const response = await api.get(`/categorias/buscar?query=${query}`)
         setResults(response.data.propiedades)
       } catch (error) {
         console.error("Error al realizar la búsqueda", error)

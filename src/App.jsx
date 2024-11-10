@@ -6,13 +6,14 @@ import Acceder from "./pages/auth/Acceder";
 import MisPropiedades from "./pages/admin/MisPropiedades";
 import { useAuth } from "./context/AuthContext";
 import PrivateRoute from "./components/PrivateRoutes/PrivateRoute";
+import CrearPropiedad from "./pages/admin/CrearPropiedad";
 
 const App = () => {
-const {isAuthenticated} = useAuth()
+  const { isAuthenticated } = useAuth()
   return (
     <>
-    
-    
+
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/categorias/buscar" element={<ResultadoBusqueda />} />
@@ -21,13 +22,12 @@ const {isAuthenticated} = useAuth()
 
         <Route element={<PrivateRoute isAuthenticated={isAuthenticated} />}>
           <Route path="/admin/mis-propiedades" element={<MisPropiedades />} />
-          <Route path="/admin/agregar-propiedad" element={<MisPropiedades />} />
-          <Route path="/admin/editar" element={<MisPropiedades />} />
+          <Route path="/admin/mis-propiedades/crear-propiedad" element={<CrearPropiedad />} />
         </Route>
       </Routes>
 
-    
-    
+
+
     </>
   );
 };

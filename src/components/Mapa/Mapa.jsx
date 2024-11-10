@@ -1,11 +1,11 @@
-// src/MapComponent.js
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import React, { useEffect } from 'react';
+import { MapContainer, TileLayer, useMap } from 'react-leaflet';
 import L from 'leaflet';
-
-// Importa las imágenes directamente
+import DraggableMarker from './Marker';
 import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+import PropTypes from 'prop-types';
 
 // Configura los iconos usando `mergeOptions`
 delete L.Icon.Default.prototype._getIconUrl;
@@ -14,23 +14,45 @@ L.Icon.Default.mergeOptions({
   iconUrl: markerIcon,
   shadowUrl: markerShadow,
 });
-const MapComponent = ({lat = 0,lng = 0}) => {
-  console.log(lat, lng);
-  
-  return (
-    <MapContainer center={[lat, lng]} zoom={16} className='h-[300px]' >
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      />
-      <Marker position={[lat, lng]}>
-        <Popup>
-          ¡Aquí estoy!
-        </Popup>
-      </Marker>
-    </MapContainer>
-  );
+
+const RecenterMap = ({ position }) => {
+  const map = useMap();
+
+  useEffect(() => {
+    map.setView(position); // Recentrar el mapa en la nueva posición
+  }, [position, map]);
+
+  return null;
 };
 
-MapComponent.propType
+const MapComponent = React.memo(({ lat, lng, isEditable, onChange }) => {
+  console.log('Se renderiza el mapa');
+
+
+  return (
+    <>
+      <MapContainer center={{lat, lng}} zoom={16} className="h-[300px]">
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        />
+        <RecenterMap position={{lat, lng}} /> {/* Componente para recentrar el mapa */}
+        <DraggableMarker
+          isEditable={isEditable}
+          changePosition={onChange}
+          propertiePosition={{lat, lng}}
+        />
+      </MapContainer>
+
+    </>
+  );
+});
+
+MapComponent.propTypes = {
+  lat: PropTypes.number,
+  lng: PropTypes.number,
+  isEditable: PropTypes.bool,
+  onChange: PropTypes.func,
+};
+
 export default MapComponent;

@@ -1,6 +1,6 @@
-
-import { useEffect, useState, createContext, useContext } from "react";
-import axios from "axios";
+import { useEffect, useState, createContext, useContext, useRef } from "react";
+import PropTypes from "prop-types";
+import api from "../utils/axiosConfig";
 
 export const AuthContext = createContext();
 
@@ -9,12 +9,15 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
+    const renderCount = useRef(0)
+    renderCount.current += 1 
+
+
     const login = async (email, password) => {
         try {
-            const response = await axios.post(
-                'http://localhost:1234/auth/acceder',
-                { email, password },
-                { withCredentials: true } 
+            const response = await api.post(
+                '/auth/acceder',
+                { email, password }
             );
             setIsAuthenticated(true);
             console.log('Seteando user');
@@ -28,7 +31,7 @@ export const AuthProvider = ({ children }) => {
 
     const logout = async () => {
         try {
-            await axios.post('http://localhost:1234/auth/logout', {}, { withCredentials: true });
+            await api.post('/auth/logout');
             setIsAuthenticated(false);
             setUser(null);
         } catch (error) {
@@ -38,14 +41,10 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const verifyAuth = async () => {
-            console.log("Verificando");
-            
             try {
-                console.log('try');
+                console.log('Verificando usuario');
                 
-                const response = await axios.get('http://localhost:1234/auth/verify', { withCredentials: true })
-                console.log("autenticando");
-                
+                const response = await api.get('/auth/verify')
                 setIsAuthenticated(true)
                 const {name, sub: id} = response.data.user
                 setUser({name,id})
@@ -59,6 +58,11 @@ export const AuthProvider = ({ children }) => {
         verifyAuth();
     }, []);
 
+        useEffect(() => {
+            console.log(`El componente AuthProvider se ha renderizado ${renderCount.current} veces.`);
+        });
+    
+
     return (
         <AuthContext.Provider value={{ isAuthenticated, user, login, logout, loading }}>
             {children}
@@ -66,4 +70,7 @@ export const AuthProvider = ({ children }) => {
     );
 };
 
+AuthProvider.propTypes = {
+    children: PropTypes.node.isRequired,
+};
 export const useAuth = () => useContext(AuthContext);

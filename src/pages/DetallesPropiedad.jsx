@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import Footer from "../components/Footer/Footer"
-import axios from "axios"
 import Header from "../components/Header/Header"
 import MapComponent from "../components/Mapa/Mapa"
 import { Baños, Cochera, Dormitorio, MetrosTotal, PlanoAmbiente } from "../icons/icon"
 import FormularioContacto from "../components/FormularioContacto/FormularioContacto"
+import api from "../utils/axiosConfig"
 
 const DetallesPropiedad = () => {
     const [result, setResults] = useState([])
@@ -16,7 +16,7 @@ const DetallesPropiedad = () => {
         // Realiza la búsqueda cuando el componente se carga o el query cambia
         const fetchResults = async () => {
             try {
-                const response = await axios.get(`http://localhost:1234/propiedades/${id}`)
+                const response = await api.get(`/propiedades/${id}`)
                 setResults(response.data.propiedad)
             } catch (error) {
                 console.error("Error al realizar la búsqueda", error)
@@ -94,9 +94,9 @@ const DetallesPropiedad = () => {
                             <div className="border-2 border-green-800">
                                 {
                                     result && result.lat !== undefined && result.lng !== undefined ? (
-                                        <MapComponent lat={result.lat} lng={result.lng} />
+                                        <MapComponent lat={result.lat} lng={result.lng} isEditable={false} />
                                     ) : (
-                                        <p>nada</p>
+                                        <p>No se encuentra el mapa</p>
                                     )
                                 }
                             </div>
