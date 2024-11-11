@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import Header from "../components/Header/Header";
-import Footer from "../components/Footer/Footer";
-import CardPropiedad from "../components/CardPropiedad/CardPropiedad";
-import api from "../utils/axiosConfig";
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
+import CardPropiedad from "./components/CardPropiedad";
+import api from "../../utils/axiosConfig";
 
 const ResultadoBusqueda = () => {
   const location = useLocation();

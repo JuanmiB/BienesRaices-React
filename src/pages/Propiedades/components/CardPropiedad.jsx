@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
 
-const CardPropiedad = ({result}) => {
- console.log(result);
- const navigate = useNavigate()
- const handleViewPropertie = (id) => {
-    navigate(`/propiedades/${id}`)
- }
- 
+const CardPropiedad = ({ result }) => {
+    console.log(result);
+    const navigate = useNavigate()
+    const handleViewPropertie = (id) => {
+        navigate(`/propiedades/${id}`)
+    }
+
     return (
         <>
             <div className="max-w-6xl min-w-[280px] bg-blue-500" key={result.titulo}>
@@ -53,8 +53,8 @@ const CardPropiedad = ({result}) => {
                                     </div>
                                 </div>
                             </div>
-                            <button className="border border-spacing-3 border-red-400 p-4" onClick={()=>{
-                                    handleViewPropertie(result.id)
+                            <button className="border border-spacing-3 border-red-400 p-4" onClick={() => {
+                                handleViewPropertie(result.id)
                             }}>Ver</button>
                         </div>
                     </div>

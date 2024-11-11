@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { House, Terrain, Market, Garage, Offices, EstateHouse, Department, Cabana } from '../../icons/icon';
+import { House, Terrain, Market, Garage, Offices, EstateHouse, Department, Cabana } from '../../../icons/icon';
 import PropTypes from 'prop-types';
 
 const iconMapping = {
