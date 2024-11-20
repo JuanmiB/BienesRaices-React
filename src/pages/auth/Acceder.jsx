@@ -1,10 +1,12 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext.jsx';
-import Header from '../../components/Header/Header';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import AuthForm from './components/AuthForm';
+import FormInput from './components/FormInput.jsx';
+import FormButton from './components/FormButton.jsx';
 
 const Acceder = () => {
-  const { login, isAuthenticated, error, loading } = useAuth();
+  const { login, isAuthenticated, error, setError, loading } = useAuth(); // Asume que tienes `setError` en el contexto.
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -14,78 +16,50 @@ const Acceder = () => {
     await login(email, password);
   };
 
+  // Redirigir si el usuario está autenticado.
   useEffect(() => {
     if (isAuthenticated) {
       navigate('/');
     }
   }, [isAuthenticated, navigate]);
 
+  // Limpiar el error cuando los inputs cambien.
+  const handleInputChange = (setter) => (e) => {
+    setter(e.target.value);
+    if (error) setError(null); // Limpia el error.
+  };
+
   return (
-    <>
-      <Header />
-      <div className="py-10">
-        <h1 className="text-4xl my-10 font-extrabold text-center">
-          Bienes <span className="font-normal">Raices</span>
-        </h1>
-
-        <section className="mt-8 mx-auto max-w-md">
-          <div className="bg-white py-8 px-4 shadow">
-            <form className="space-y-5" onSubmit={handleSubmit}>
-              {error && <p className="text-red-500 text-sm">{error}</p>}
-              
-              {/* Mostrar mensaje de carga */}
-              {loading ? (
-                <p className="text-center text-indigo-600">Cargando...</p>
-              ) : (
-                <>
-                  <div>
-                    <label
-                      className="block text-sm uppercase text-gray-500 mb-5 font-bold"
-                      htmlFor="email"
-                    >
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      id="email"
-                      placeholder="Nombre"
-                      className="block w-64 px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 placeholder:italic"
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      className="block text-sm uppercase text-gray-500 mb-5 font-bold"
-                      htmlFor="password"
-                    >
-                      Contraseña
-                    </label>
-                    <input
-                      type="password"
-                      name="password"
-                      id="password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      placeholder="email@ejemplo.com"
-                      className="block w-64 px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 placeholder:italic"
-                    />
-                  </div>
-
-                  <input
-                    type="submit"
-                    value="Iniciar Sesión"
-                    className="w-32 bg-indigo-600 hover:bg-indigo-900 rounded-md py-2 active:bg-indigo-200"
-                  />
-                </>
-              )}
-            </form>
-          </div>
-        </section>
+    <AuthForm title="Iniciar Sesión" onSubmit={handleSubmit}>
+      {/* Mensaje de error */}
+      <div className="h-6">
+        <p className={`text-red-500 text-sm ${error?.response?.data?.message ? 'block' : 'hidden'}`}>
+          {error?.response?.data?.message}
+        </p>
       </div>
-    </>
+
+      <FormInput
+        type="email"
+        id="email"
+        label="Email"
+        placeholder="email@ejemplo.com"
+        value={email}
+        onChange={handleInputChange(setEmail)}
+      />
+      <FormInput
+        type="password"
+        id="password"
+        label="Contraseña"
+        placeholder="********"
+        value={password}
+        onChange={handleInputChange(setPassword)}
+      />
+      <FormButton label="Iniciar Sesión" isLoading={loading} />
+
+      <Link to="/auth/recuperar-contraseña" className="text-indigo-600 hover:underline" onClick={()=> setError(false)}>
+        Recupérala aquí
+      </Link>
+    </AuthForm>
   );
 };
 

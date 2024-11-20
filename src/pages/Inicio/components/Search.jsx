@@ -11,30 +11,50 @@ const Search = ({selectOps, radioOps}) => {
     // funcion para manejar la busqueda colocando el search 
 
     const [searchTerm, setSearchTerm] = useState("");
+    const [categoria, setCategoria] = useState('Casa')
     const navigate = useNavigate();
+    console.log(categoria);
+    
   
     const handleInputChange = (e) => {
       setSearchTerm(e.target.value);
     };
-  
-    const handleSearch = () => {
-      // Navega hacia la vista de resultados, pasando el término de búsqueda como parámetro
-      if (searchTerm) {
-        navigate(`/categorias/buscar?query=${searchTerm}`);
-      }
-    };
 
+    const handleCategoriaChange = (e)=>{
+        console.log("Categoría seleccionada:", e.target.value); // Log para debug
+        setCategoria(e.target.value)
+    }
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        // Navega hacia la vista de resultados, pasando los parámetros como query string
+        const queryParams = new URLSearchParams();
+        console.log(queryParams);
+        console.log(categoria);
+        console.log(searchTerm);
+        
+        
+        if (searchTerm) queryParams.append("query", searchTerm);
+        if (categoria) queryParams.append("category", categoria);
+        console.log("Parámetros finales:", queryParams.toString());
+        navigate(`/buscar?${queryParams.toString()}`);
+      };
 
     return (
         <section className="flex flex-col rounded-b-2xl custom:rounded-b-[0] custom:px-24 bg-[var(--color-primary)]">
-            <h2 className="text-3xl font-bold text-white pt-16">Todos tenemos un lugar</h2>
-            <div className="w-full flex flex-col py-4 ">
+            <h2 className="text-3xl font-bold text-white pt-2">Todos tenemos un lugar</h2>
+            <form className="w-full flex flex-col py-4 " onSubmit={handleSearch}>
                 {/* Son inputs radio */}
               <RadioOptions opciones={radioOps}/>
 
               <div className="flex flex-col px-4 lg:px-0 custom:items-center custom:justify-center w-full gap-2 custom:flex-row">
                     <div>
-                        <select name="" id="" className="w-full custom:w-[200px] border-slate-300 rounded-md px-3 text-slate-600 focus:outline-none focus:border-blue-600 h-[56px]">
+                        <select 
+                        value={categoria}
+                        onChange={handleCategoriaChange} 
+                        name="" 
+                        id="" 
+                        className="w-full custom:w-[200px] border-slate-300 rounded-md px-3 text-slate-600 focus:outline-none focus:border-blue-600 h-[56px]">
                         {selectOps.map((option, index) => (
                     <option key={index} value={option}>{option}</option>
                 ))}
@@ -48,7 +68,6 @@ const Search = ({selectOps, radioOps}) => {
                         placeholder="Casa, Palermo, Alquiler"
                         value={searchTerm}
                         onChange={handleInputChange}
-                        
                         />
 
                         <button 
@@ -57,7 +76,7 @@ const Search = ({selectOps, radioOps}) => {
                         >Buscar</button>
                     </div>
                 </div>
-            </div>
+            </form>
         </section>
     )
 }

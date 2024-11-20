@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header/Header";
 import Search from './components/Search';
 import CardCategories from "./components/CardCategories";
 import api from '../../utils/axiosConfig';
@@ -14,7 +13,7 @@ const Inicio = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const { data } = await api.get('/');
+        const { data } = await api.get('/categorias');
         const nombreCat = data.categorias.map(cat => cat.name);
         setCategories(nombreCat);
       } catch (error) {
@@ -29,21 +28,10 @@ const Inicio = () => {
 
   return (
     <>
-      <Header />
       <Search radioOps={ops} selectOps={categories} />
       {/* Contenido */}
-      <section className="p-4 flex items-center justify-center">
-        {loading ? (
-         <p>Cargando.....</p>
-        ) : (
-          <ul className='grid grid-cols-2 gap-4 sm:grid-cols-3 sm:grid-rows-2 md:grid-cols-4 md:grid-rows-1 xl:grid-cols-8 my-10 md:my-24'>
-            {categories.length ? categories.map(cat => (
-              <CardCategories cat={cat} key={cat} />
-            )) : (
-              <p>No hay resultado</p>
-            )}
-          </ul>
-        )}
+      <section className="md:min-h-[70vh] p-4 flex items-center justify-center">
+              <CardCategories  />
       </section>
       <Footer />
     </>

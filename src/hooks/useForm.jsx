@@ -14,8 +14,6 @@ const useForm = (initialValue) => {
 
     const handleSubmit = (event, onSubmit) =>{
         event.preventDefault()
-        //personlizar
-        console.log('Enviando', values);
         if(onSubmit) onSubmit(values)
     }
 
@@ -26,13 +24,20 @@ const useForm = (initialValue) => {
     const handleAddress = (address) => {
         setValues({ ...values, calle: address });
       };
+
+      const handleFile = (file) => {
+        setValues({ ...values, file }); // Guardamos el archivo en el estado
+      };
+    
 return {
     values,
     handleChange,
     resetForm,
     handleSubmit,
     handleLatLng,
-    handleAddress
+    handleAddress,
+    handleFile,
+    setValues
 }
 }
 export default useForm

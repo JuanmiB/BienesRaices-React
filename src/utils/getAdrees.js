@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const getAdress = async ({ lat, lng }) => {
+const getAddress = async (lat, lng ) => {
     console.log("Latitud y longitud recibidas:", lat, lng);
 
     const url = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json&addressdetails=1`;
@@ -19,4 +19,4 @@ const getAdress = async ({ lat, lng }) => {
     }
 };
 
-export default getAdress;
+export default getAddress;

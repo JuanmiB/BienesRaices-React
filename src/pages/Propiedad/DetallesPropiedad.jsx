@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header/Header";
 import FormularioContacto from "../../components/FormularioContacto/FormularioContacto";
 import { PropiedadImagen, PropiedadInfo, PropiedadDescripcion, PropiedadMapa } from ".";
 import api from "../../utils/axiosConfig";
+import { useAuth } from "../../context/AuthContext";
 
 const DetallesPropiedad = () => {
   const [result, setResults] = useState(null);
   const { id } = useParams();
-
+  const { user } = useAuth()
+  
   useEffect(() => {
     const fetchResults = async () => {
       try {
@@ -27,10 +28,15 @@ const DetallesPropiedad = () => {
 
   return (
     <>
-      <Header />
       {result ? (
-        <section className="flex flex-col customlg:grid customlg:grid-cols-[repeat(35%,65%)] gap-4 customlg:mt-10 customlg:mx-36 mx-2 my-5">
-          <PropiedadImagen fotoPath={result?.foto?.path} />
+     <section
+     className={`flex flex-col gap-4 mx-2 my-5 ${
+       user?.id === result.usuarioId
+         ? 'customlg:mx-36' // No aplica estilos de grilla
+         : 'customlg:grid customlg:grid-cols-[repeat(35%,65%)] customlg:mt-10 customlg:mx-36'
+     }`}
+   >
+          <PropiedadImagen fotoPath={result?.foto?.url} />
           <div className="flex flex-col gap-4 ">
             <PropiedadInfo
               titulo={result.titulo}
@@ -39,14 +45,16 @@ const DetallesPropiedad = () => {
               calle={result.calle}
               ambientes={result.ambientes}
               dormitorios={result.dormitorios}
-              banos={result.baños}
+              banos={result.banos}
               cochera={result.cochera}
               metros={result.metros}
             />
             <PropiedadDescripcion descripcion={result.descripcion} />
             <PropiedadMapa lat={result.lat} lng={result.lng} />
           </div>
-          <FormularioContacto />
+         {
+          user?.id !== result.usuarioId ? <FormularioContacto/> : null
+         }
         </section>
       ) : (
         <p>No hay resultado</p>
