@@ -3,7 +3,7 @@
 Aplicación web (con su respetiva version mobile) para la gestión de propiedades. Permite a los usuarios buscar, agregar, editar y eliminar propiedades, así como visualizar fotos y detalles relacionados con cada propiedad. Incluye funcionalidades de autenticación de usuarios, protección de rutas y carga de imágenes.
 ## Screenshots
 
-![App Screenshot](https://res-console.cloudinary.com/dzjohez3d/thumbnails/v1/image/upload/v1734027570/U2NyZWVuc2hvdF8yMDI0LTEyLTEyX2F0XzE1LTE3LTAzX0JpZW5lc1JhaWNlc19paXU3ZDM=/drilldown)
+![screen-home-br](https://github.com/user-attachments/assets/78192ef6-22cc-430b-ab79-ef5ec52e3de1)
 
 
 ## Features
