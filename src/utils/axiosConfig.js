@@ -2,7 +2,7 @@ import axios  from "axios";
 
 //Se crea la instancia de Axios 
 const api = axios.create({
-    baseURL: 'https://bienesraices-s.onrender.com/',
+    baseURL: 'http://localhost:1234',
     withCredentials: true
 })
 

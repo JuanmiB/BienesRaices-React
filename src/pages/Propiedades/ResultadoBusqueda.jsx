@@ -15,25 +15,25 @@ const ResultadoBusqueda = () => {
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-console.log( results);
+  console.log(results);
 
   const navigate = useNavigate();
-  
-  useEffect(() => {
-      const fetchCategories = async () => {
-          try {
-              const { data } = await api.get('/categorias');
-              const categoriasFormateadas = data.categorias.map(cat => ({
-                  id: cat.id,
-                  name: cat.name 
-              }));
-              setCategorias(categoriasFormateadas)
-          } catch (error) {
-              console.error('Error fetching categories:', error);
-          }
-      };
 
-      fetchCategories();
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const { data } = await api.get('/categorias');
+        const categoriasFormateadas = data.categorias.map(cat => ({
+          id: cat.id,
+          name: cat.name
+        }));
+        setCategorias(categoriasFormateadas)
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+      }
+    };
+
+    fetchCategories();
   }, []);
 
   const formatCategory = (category) => {
@@ -47,35 +47,37 @@ console.log( results);
         setError(null);
         const formattedCategory = category ? formatCategory(category) : null;
 
-        
+
         // Solo construye la URL si hay query o category
         const url = query && category
           ? `/buscar?query=${query}&category=${formattedCategory}`
-          
+
           : category
-          ? `/buscar?category=${formattedCategory}`
-          : null;  // No hace la llamada si no hay ni query ni category
-  
+            ? `/buscar?category=${formattedCategory}`
+            : null;  // No hace la llamada si no hay ni query ni category
+
         // Si no hay parámetros, no ejecuta la solicitud
         if (!url) return;
-  
+
         console.log("Llamada a API:", url);
-  
+
         // Llamar a la API
         const response = await api.get(url);
         setResults(response.data.data);
       } catch (err) {
         setError("Hubo un problema al obtener los resultados.");
         console.error(err);
+     setResults([])
+        
       } finally {
         setLoading(false);
       }
     };
-  
+
     // Realiza la búsqueda si hay query o category
     if (query || category) fetchResults();
   }, [query, category]);
-  
+
 
   // Cargar usuarios relacionados con las propiedades
   useEffect(() => {
@@ -104,28 +106,30 @@ console.log( results);
   const handleSearch = (category) => {
     const categoria = formatCategory(category)
     navigate(`/buscar?category=${categoria}`)
-}
-  
+  }
+
 
   return (
     <div>
-           <ul className="md:flex md:flex-row md:gap-4 md:justify-center md:items-center bg-[var(--color-primary)] p-2">
-                {categorias.length > 0 ? (
-                    categorias.map((categoria) => (
-                        <li
-                            key={categoria.id} 
-                            onClick={() => handleSearch(categoria.name)} 
-                            className="relative group text-white cursor-pointer">
-                            {categoria.name} 
-                            <span className="absolute bottom-0 left-0 w-full h-[3px] bg-[#6343c6] rounded-md scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                        </li>
-                    ))
-                ) : (
-                    <p>nada</p>
-                )}
-            </ul>
-      <h2>Resultados de búsqueda para: {query}</h2>
-      <div className="min-h-[70vh] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 p-20">
+      <ul className="md:flex md:flex-row md:gap-4 md:justify-center md:items-center bg-[var(--color-primary)] p-2">
+        {categorias.length > 0 ? (
+          categorias.map((categoria) => (
+            <li
+              key={categoria.id}
+              onClick={() => handleSearch(categoria.name)}
+              className="relative group text-white cursor-pointer">
+              {categoria.name}
+              <span className="absolute bottom-0 left-0 w-full h-[3px] md:bg-[#6343c6] rounded-md scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+            </li>
+          ))
+        ) : (
+          <p>No hay propiedades</p>
+        )}
+      </ul>
+      <div className="mx-6 mt-2">
+      <h2 className="text-lg">Resultados de búsqueda para: {query || category}</h2>
+      </div>
+      <div className="min-h-[70vh] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mx-20 my-8">
         {results.length > 0 ? (
           results.map((result) => (
             <CardPropiedad

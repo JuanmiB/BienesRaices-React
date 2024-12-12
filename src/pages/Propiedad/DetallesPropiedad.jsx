@@ -25,6 +25,7 @@ const DetallesPropiedad = () => {
       fetchResults();
     }
   }, [id]);
+console.log(result);
 
   return (
     <>

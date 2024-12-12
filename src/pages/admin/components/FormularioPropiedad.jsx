@@ -104,13 +104,17 @@ fetchInitialData()
     );
 };
 
-export const CategoriaPrecio = ({ values, handleChange, categorias }) => {
+export const CategoriaPrecio = ({ values, handleChange, categorias, isEditable = true }) => {
+    console.log('LOS VALUES DE LA CAAATASDASD');
+    console.log(values);
+    console.log(categorias);
+    
     return (
         <div className="border-2 border-gray-200 p-4 rounded-md space-y-4 lg:grid lg:grid-cols-2 lg:items-center lg:gap-10">
             <label className="block mt-4">
                 <span className="text-gray-600 font-medium mr-2">Categoría:</span>
                 <select
-                    name="categoria"
+                    name="categoriaId"
                     value={values.categoria}
                     onChange={handleChange}
                     className="lg:w-1/3 h-[42px] mt-2 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-emerald-300"

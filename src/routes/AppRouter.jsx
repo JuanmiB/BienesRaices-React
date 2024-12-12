@@ -16,7 +16,6 @@ import Resultado from "../pages/Propiedades/Resultado";
 import ResultadoBusqueda from "../pages/Propiedades/ResultadoBusqueda";
 import EditarPropiedad from "../pages/Admin/EditarPropiedad";
 const AppRouter = () => {
-    const { isAuthenticated } = useAuth()
     const renderCount = useRef(0);
     renderCount.current += 1;
     console.log(`El app se renderizo: ${renderCount.current}`);
@@ -32,7 +31,7 @@ const AppRouter = () => {
           <Route path="/auth/recuperar-contraseña" element={<RecuperarContraseña />} />
           <Route path="/auth/reset-password/:token" element={<RestablecerContraseña />} />
   
-          <Route element={<PrivateRoute isAuthenticated={isAuthenticated} />}>
+          <Route element={<PrivateRoute />}>
             <Route path="/admin/mis-propiedades" element={<MisPropiedades />} />
             <Route path="/admin/mis-propiedades/crear-propiedad" element={<CrearPropiedad isEditable/>} />
             <Route path="/admin/mis-propiedades/editar/:id" element={<EditarPropiedad />} />

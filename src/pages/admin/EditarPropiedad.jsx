@@ -37,12 +37,13 @@ console.log(values);
       try {
         const response = await api.get(`/propiedades/${id}`);
         const data = response.data.propiedad;
-        console.log(data.propiedad);
+        console.log("la data de la prop a editar",data);
+        
         
         setValues({
           titulo: data.titulo,
           descripcion: data.descripcion,
-          categoria: data.categoria,
+          categoriaId: data.categoriaId,
           precio: data?.precio?.precio,
           ambientes: data.ambientes,
           dormitorios: data.dormitorios,
@@ -63,6 +64,9 @@ console.log(values);
 
     fetchPropiedad();
   }, [id]);
+
+
+  
 
   const onSubmit = async (data) => {
     try {
@@ -86,6 +90,7 @@ console.log(values);
   };
 
   if (loading) return <p>Cargando...</p>;
+console.log('Propiedad a Editar', values);
 
   return (
     <section className="border border-blue-500 p-6 my-4 max-w-lg md:max-w-2xl lg:max-w-4xl mx-auto bg-white shadow-lg rounded-lg">

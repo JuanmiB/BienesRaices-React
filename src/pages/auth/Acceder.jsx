@@ -55,10 +55,12 @@ const Acceder = () => {
         onChange={handleInputChange(setPassword)}
       />
       <FormButton label="Iniciar Sesión" isLoading={loading} />
-
+      <div>
+    <p>Olvidaste tu contraseña?</p>
       <Link to="/auth/recuperar-contraseña" className="text-indigo-600 hover:underline" onClick={()=> setError(false)}>
         Recupérala aquí
       </Link>
+      </div>
     </AuthForm>
   );
 };
