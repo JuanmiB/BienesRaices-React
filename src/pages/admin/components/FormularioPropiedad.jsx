@@ -115,7 +115,7 @@ export const CategoriaPrecio = ({ values, handleChange, categorias, isEditable =
                 <span className="text-gray-600 font-medium mr-2">Categoría:</span>
                 <select
                     name="categoriaId"
-                    value={values.categoria}
+                    value={values.categoriaId}
                     onChange={handleChange}
                     className="lg:w-1/3 h-[42px] mt-2 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-emerald-300"
                 >

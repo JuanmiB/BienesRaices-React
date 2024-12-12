@@ -2,7 +2,7 @@
 import { Baños, Cochera, Dormitorio, MetrosTotal, PlanoAmbiente } from "../../../icons/icon";
 
 const PropiedadInfo = ({ titulo, precio, moneda, calle, ambientes, dormitorios, banos, cochera, metros }) => (
-  <div className="p-6 border-2 rounded bg-slate-100 h-fit">
+  <div className="p-6 border-2 rounded bg-slate-100 h-fit md:hover:border-blue-600">
     <div className="grid grid-cols-2">
       <p className="font-extrabold text-2xl">{titulo}</p>
       <p className="font-extrabold text-xl text-violet-600 ">${precio} <span>{moneda}</span></p>

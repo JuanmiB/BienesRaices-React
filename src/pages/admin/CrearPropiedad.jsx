@@ -13,7 +13,7 @@ const CrearPropiedad = () => {
   const initialValues = {
     titulo: "",
     descripcion: "",
-    categoria: "",
+    categoria: 0,
     precio: "",
     ambientes: "",
     dormitorios: "",
@@ -30,13 +30,13 @@ const CrearPropiedad = () => {
   const onSubmit = async (data) => {
     try {
       const formData = new FormData();
-      // Agregar datos del formulario
+   
       Object.keys(data).forEach(key => {
         formData.append(key, data[key]);
       })
-      // Agregar la imagen seleccionada
+  
       if (imagen) {
-        formData.append("imagen", imagen); // La clave "imagen" debe coincidir con lo que espera tu backend
+        formData.append("imagen", imagen); // La clave "imagen" debe coincidir con back
       }
       const response = await api.post('/admin/mis-propiedades/crear-propiedad', formData, {
         headers: { "Content-Type": "multipart/form-data" },

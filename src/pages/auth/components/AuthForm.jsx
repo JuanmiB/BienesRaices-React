@@ -8,7 +8,7 @@ const AuthForm = ({ title, children, onSubmit }) => {
       </h1>
       <section className="mt-8 mx-auto max-w-md">
         <div className="bg-white py-8 px-4 shadow rounded-lg">
-          <h2 className="text-lg font-bold text-center mb-6">{title}</h2>
+          <h2 className="text-lg font-bold text-center">{title}</h2>
           <form className="space-y-5" onSubmit={onSubmit}>
             {children}
           </form>

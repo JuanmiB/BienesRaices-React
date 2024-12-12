@@ -1,20 +1,9 @@
-<<<<<<< HEAD
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-=======
-
 # BienesRaices | Proyecto Inmobiliario
 
 Aplicación web (con su respetiva version mobile) para la gestión de propiedades. Permite a los usuarios buscar, agregar, editar y eliminar propiedades, así como visualizar fotos y detalles relacionados con cada propiedad. Incluye funcionalidades de autenticación de usuarios, protección de rutas y carga de imágenes.
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](https://res-console.cloudinary.com/dzjohez3d/thumbnails/v1/image/upload/v1734027570/U2NyZWVuc2hvdF8yMDI0LTEyLTEyX2F0XzE1LTE3LTAzX0JpZW5lc1JhaWNlc19paXU3ZDM=/drilldown)
 
 
 ## Features

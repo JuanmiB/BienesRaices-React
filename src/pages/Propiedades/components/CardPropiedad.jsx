@@ -9,7 +9,7 @@ const CardPropiedad = ({ result }) => {
     return (
         <>
             <div
-                className="max-w-6xl min-w-[280px] border-2 rounded-lg border-grey cursor-pointer md:hover:border-2 md:hover:border-[var(--color-primary)] transition-all duration-200" // Agrega cursor-pointer para indicar que es clickeable
+                className="h-min max-w-6xl min-w-[280px] border-2 rounded-lg border-grey cursor-pointer md:hover:border-2 md:hover:border-[var(--color-primary)] transition-all duration-200" // Agrega cursor-pointer para indicar que es clickeable
                 key={result.titulo}
                 onClick={() => handleViewPropertie(result.id)} // Aquí se maneja el clic en toda la tarjeta
             >

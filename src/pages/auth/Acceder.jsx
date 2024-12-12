@@ -30,7 +30,7 @@ const Acceder = () => {
   };
 
   return (
-    <AuthForm title="Iniciar Sesión" onSubmit={handleSubmit}>
+    <AuthForm title="Ingrensa a tu cuenta" onSubmit={handleSubmit}>
       {/* Mensaje de error */}
       <div className="h-6">
         <p className={`text-red-500 text-sm ${error?.response?.data?.message ? 'block' : 'hidden'}`}>
