@@ -1,10 +1,15 @@
 # BienesRaices | Proyecto Inmobiliario
 
-Aplicación web (con su respetiva version mobile) para la gestión de propiedades. Permite a los usuarios buscar, agregar, editar y eliminar propiedades, así como visualizar fotos y detalles relacionados con cada propiedad. Incluye funcionalidades de autenticación de usuarios, protección de rutas y carga de imágenes.
+Aplicación web para la gestión de propiedades. Permite a los usuarios buscar, agregar, editar y eliminar propiedades, así como visualizar fotos y detalles relacionados con cada propiedad. Incluye funcionalidades de autenticación de usuarios, protección de rutas y carga de imágenes.
 ## Screenshots
 
 ![screen-home-br](https://github.com/user-attachments/assets/78192ef6-22cc-430b-ab79-ef5ec52e3de1)
 
+![screen-mis-propiedades-br](https://github.com/user-attachments/assets/27d72d50-ccba-466e-a5f4-01380da578bf)
+
+![screen-details-br](https://github.com/user-attachments/assets/2f53512d-d41f-4c79-a23c-8b84724355e4)
+
+![screen-publicar-br](https://github.com/user-attachments/assets/f446ce39-380b-45e4-8330-59f84b303d3a)
 
 ## Features
 
